@@ -12,10 +12,10 @@ import transformers
 import tokenizers
 from llava.constants import IGNORE_INDEX, IMAGE_TOKEN_INDEX, DEFAULT_IMAGE_TOKEN, DEFAULT_IM_START_TOKEN, DEFAULT_IM_END_TOKEN
 from torch.utils.data import Dataset
-from llava.train.llava_trainer import LLaVATrainer
+# from llava.train.llava_trainer import LLaVATrainer
 from llava import conversation as conversation_lib
-from llava.model import *
 from llava.mm_utils import tokenizer_image_token
+# from llava.model import *
 from llava.model.language_model.llava_phi3 import LlavaPhiForCausalLM, LlavaPhiConfig
 from PIL import Image
 import pickle
@@ -26,16 +26,16 @@ from utils import find_all_linear_names, add_special_tokens_and_resize_model, lo
 
 def infer():
     parser = argparse.ArgumentParser()
-    parser.add_argument('--model_name_or_path', type=str, default='microsoft/Phi-3-mini-4k-instruct')
-    parser.add_argument('--dtype', type=str, default='FP32')
+    parser.add_argument('--model_name_or_path', type=str, default='microsoft/Phi-4')
+    parser.add_argument('--dtype', type=str, default='FP16')
     parser.add_argument('--attn_implementation', type=str, default=None)
-    parser.add_argument('--hlora_r', type=int, default=16)
-    parser.add_argument('--hlora_alpha', type=int, default=32)
+    parser.add_argument('--hlora_r', type=int, default=32)
+    parser.add_argument('--hlora_alpha', type=int, default=64)
     parser.add_argument('--hlora_dropout', type=float, default=0.0)
     parser.add_argument('--hlora_nums', type=int, default=4)
-    parser.add_argument('--vq_idx_nums', type=int, default=1024)
-    parser.add_argument('--instruct_template', type=str, default='phi3_instruct')
-    parser.add_argument('--vit_path', type=str, default='openai/clip-vit-large-patch14-336')
+    parser.add_argument('--vq_idx_nums', type=int, default=8192)
+    parser.add_argument('--instruct_template', type=str, default='phi4_instruct')
+    parser.add_argument('--vit_path', type=str, default='openai/clip-vit-large-patch14-336/')
     parser.add_argument('--hlora_path', type=str, default=None)
     parser.add_argument('--fusion_layer_path', type=str, default=None)
     parser.add_argument('--question', type=str, default=None)
@@ -47,7 +47,6 @@ def infer():
     parser.add_argument('--max_new_tokens', type=int, default=1024)
     
     
-
     args = parser.parse_args()
 
     model_dtype = torch.float32 if args.dtype == 'FP32' else (torch.float16 if args.dtype == 'FP16' else torch.bfloat16)

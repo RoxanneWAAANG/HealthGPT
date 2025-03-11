@@ -12,7 +12,7 @@ import transformers
 import tokenizers
 from llava.constants import IGNORE_INDEX, IMAGE_TOKEN_INDEX, DEFAULT_IMAGE_TOKEN, DEFAULT_IM_START_TOKEN, DEFAULT_IM_END_TOKEN
 from torch.utils.data import Dataset
-from llava.train.llava_trainer import LLaVATrainer
+# from llava.train.llava_trainer import LLaVATrainer
 from llava import conversation as conversation_lib
 from llava.model import *
 from llava.mm_utils import tokenizer_image_token
@@ -89,6 +89,7 @@ def infer():
     model.get_vision_tower().to(dtype=model_dtype)
 
     model = load_weights(model, args.hlora_path, args.fusion_layer_path)
+    print(f"Model is using device: {model.device}")
     model.eval()
     model.to(model_dtype).cuda()
 
@@ -130,5 +131,6 @@ def infer():
 
 
 if __name__ == "__main__":
+    
 
     infer()

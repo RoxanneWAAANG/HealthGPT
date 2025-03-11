@@ -24,6 +24,7 @@ output
 
 checkpoints
 ckpts*
+*.ckpt
 
 .ipynb_checkpoints
 *.ipynb
@@ -33,3 +34,9 @@ ckpts*
 
 # Demo
 serve_images/
+
+
+/a_mri2ct
+/a_mri2ct_raw
+/a_output
+/a_sample_data

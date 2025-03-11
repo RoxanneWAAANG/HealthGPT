@@ -1,9 +1,9 @@
 #!/bin/bash
 
-MODEL_NAME_OR_PATH="microsoft/Phi-3-mini-4k-instruct"
-VIT_PATH="openai/clip-vit-large-patch14-336/"
-HLORA_PATH="gen_hlora_weights.bin"
-FUSION_LAYER_PATH="fusion_layer_weights.bin"
+MODEL_NAME_OR_PATH="/home/jack/Projects/yixin-llm/yixin-llm-data/HealthGPT/Phi3"
+VIT_PATH="openai/clip-vit-large-patch14-336"
+HLORA_PATH="/data1/jackdata/yixin-llm-data/HealthGPT/fusion_layer/gen_hlora_weights.bin"
+FUSION_LAYER_PATH="/data1/jackdata/yixin-llm-data/HealthGPT/fusion_layer/fusion_layer_weights.bin"
 
 python3 gen_infer.py \
     --model_name_or_path "$MODEL_NAME_OR_PATH" \
@@ -16,6 +16,6 @@ python3 gen_infer.py \
     --vit_path "$VIT_PATH" \
     --hlora_path "$HLORA_PATH" \
     --fusion_layer_path "$FUSION_LAYER_PATH" \
-    --question "Reconstruct the image." \
-    --img_path "path/to/image.jpg" \
-    --save_path "path/to/save.jpg"
+    --question "I need a version of this CT representation in MRI." \
+    --img_path "/home/jack/Projects/yixin-llm/HealthGPT/a_sample_data/ct3.png" \
+    --save_path "/home/jack/Projects/yixin-llm/HealthGPT/a_output/ct3.png" \
