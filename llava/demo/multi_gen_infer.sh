@@ -5,14 +5,12 @@ VIT_PATH="openai/clip-vit-large-patch14-336"
 HLORA_PATH="/data1/jackdata/yixin-llm-data/HealthGPT/fusion_layer/gen_hlora_weights.bin"
 FUSION_LAYER_PATH="/data1/jackdata/yixin-llm-data/HealthGPT/fusion_layer/fusion_layer_weights.bin"
 
-INPUT_DIR="/home/jack/Projects/yixin-llm/HealthGPT/a_sample_data"
+INPUT_DIR="/home/jack/Projects/yixin-llm/HealthGPT/a_mri2ct"
 OUTPUT_DIR="/home/jack/Projects/yixin-llm/HealthGPT/a_output"
-FILE_SUFFIX="_000.png"  # Common suffix for all files
 
-for i in $(seq -w 1 10)  # Zero-padded sequence from 00000001 to 00000050
-do
-    IMG_PATH="$INPUT_DIR/$(printf "%08d%s" "$i" "$FILE_SUFFIX")"
-    SAVE_PATH="$OUTPUT_DIR/$(printf "%08d%s" "$i" "$FILE_SUFFIX")"
+for IMG_PATH in "$INPUT_DIR"/*; do
+    FILE_NAME=$(basename "$IMG_PATH")
+    SAVE_PATH="$OUTPUT_DIR/$FILE_NAME"
 
     echo "Processing: $IMG_PATH -> $SAVE_PATH"
 
@@ -31,7 +29,7 @@ do
         --img_path "$IMG_PATH" \
         --save_path "$SAVE_PATH"
 
-    echo "Iteration $i completed."
+    echo "Processing of $FILE_NAME completed."
 done
 
-echo "All 10 runs completed!"
+echo "All images processed!"
