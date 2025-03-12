@@ -25,7 +25,7 @@ for IMG_PATH in "$INPUT_DIR"/*; do
         --vit_path "$VIT_PATH" \
         --hlora_path "$HLORA_PATH" \
         --fusion_layer_path "$FUSION_LAYER_PATH" \
-        --question "Could you improve the quality of this MRI image?" \
+        --question "Transform the MRI display into a CT image" \
         --img_path "$IMG_PATH" \
         --save_path "$SAVE_PATH"
 

@@ -34,7 +34,7 @@ find "$SOURCE_DIR" -name "*.mha" | while read -r mha_file; do
     echo "[$((++count))/$total] Processing: $filename"
     
     # Convert the MHA file to PNG using the middle slice
-    python "$MHA2PNG_SCRIPT" "$mha_file" "$png_file" --output-size "$OUTPUT_SIZE"
+    python3 "$MHA2PNG_SCRIPT" "$mha_file" "$png_file" --output-size "$OUTPUT_SIZE"
     
     # Check if conversion was successful
     if [ $? -eq 0 ]; then
