@@ -28,7 +28,7 @@ from utils import find_all_linear_names, add_special_tokens_and_resize_model, lo
 
 def infer():
     parser = argparse.ArgumentParser()
-    parser.add_argument('--model_name_or_path', type=str, default='microsoft/Phi-3-mini-4k-instruct')
+    parser.add_argument('--model_name_or_path', type=str, default='microsoft/Phi-4')
     parser.add_argument('--dtype', type=str, default='FP32')
     parser.add_argument('--attn_implementation', type=str, default=None)
     parser.add_argument('--hlora_r', type=int, default=16)
@@ -36,7 +36,7 @@ def infer():
     parser.add_argument('--hlora_dropout', type=float, default=0.0)
     parser.add_argument('--hlora_nums', type=int, default=4)
     parser.add_argument('--vq_idx_nums', type=int, default=1024)
-    parser.add_argument('--instruct_template', type=str, default='phi3_instruct')
+    parser.add_argument('--instruct_template', type=str, default='phi4_instruct')
     parser.add_argument('--vit_path', type=str, default='openai/clip-vit-large-patch14-336')
     parser.add_argument('--hlora_path', type=str, default=None)
     parser.add_argument('--fusion_layer_path', type=str, default=None)
