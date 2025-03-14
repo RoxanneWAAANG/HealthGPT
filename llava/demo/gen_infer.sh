@@ -16,6 +16,6 @@ python3 gen_infer.py \
     --vit_path "$VIT_PATH" \
     --hlora_path "$HLORA_PATH" \
     --fusion_layer_path "$FUSION_LAYER_PATH" \
-    --question "Transform the MRI display into a CT image" \
-    --img_path "/home/jack/Projects/yixin-llm/HealthGPT/a_mri2ct/81_t2_SPACE.png" \
-    --save_path "/home/jack/Projects/yixin-llm/HealthGPT/a_output/81_t2_SPACE.png" \
+    --question "I need a version of this CT representation in MRI" \
+    --img_path "/home/jack/Projects/yixin-llm/HealthGPT/a_output/ct.tiff" \
+    --save_path "/home/jack/Projects/yixin-llm/HealthGPT/a_output/ct_npy.png" \
