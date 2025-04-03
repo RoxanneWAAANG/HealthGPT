@@ -15,4 +15,4 @@ python3 com_infer_phi4.py \
     --vit_path "$VIT_PATH" \
     --hlora_path "$HLORA_PATH" \
     --question "What is the diabetic macular edema grade for this image?" \
-    --img_path "/home/jack/Projects/yixin-llm/HealthGPT/a_sample_data/IDRiD_003.jpg" \
+    --img_path "/home/jack/Projects/yixin-llm/HealthGPT/a_fundus/test/C0002369.jpg" \
